@@ -60,16 +60,6 @@ def yuv2rgb(yuv):
     temp = tf.div(temp, 255)
     return temp
 
-def read_image(filename):
-    file_contents = tf.read_file(filename)
-    uint8image = tf.image.decode_jpeg(file_contents, channels=3)
-    uint8image = tf.random_crop(uint8image, (224, 224, 3))
-    float_image = tf.div(tf.cast(uint8image, tf.float32), 255)
-    return float_image
-
-def imread(path):
-    return scipy.misc.imread(path).astype(np.float)
-
 
 styled_grayscale = tf.image.rgb_to_grayscale(styled)
 styled_grayscale_rgb = tf.image.grayscale_to_rgb(styled_grayscale)
